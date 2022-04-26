@@ -27,7 +27,7 @@ if (!result) {
         content = draft.content,
         prompt = Prompt.create(),
         date = new Date(),
-now = new Date().toISOString().substr(0, 10);
+	now = new Date().toISOString().substr(0, 10);
 
         prompt.title = 'Jekyll post data';
         prompt.message = 'Enter Jekyll post data';
@@ -40,6 +40,7 @@ now = new Date().toISOString().substr(0, 10);
         };
 
         prompt.addTextField('link', 'Link', '');
+	prompt.addTextField('cited', 'Cited', '');
         prompt.addTextField('date', 'Date', now);
        
         prompt.addButton('Ok');
@@ -67,6 +68,7 @@ now = new Date().toISOString().substr(0, 10);
                 newDraft += 'link: ' + prompt.fieldValues['link'] + '\n';
 
             newDraft += 'title: ' + prompt.fieldValues['title'] + '\n';
+	    newDraft += 'cited: ' + prompt.fieldValues['cited'] + '\n';
             newDraft += '\n';
             newDraft += '---\n';
             newDraft += '\n';
