@@ -1,7 +1,7 @@
 /*
  * @title: Jekyll formatting -> Working Copy
- * @author: Mat B
- * @email: Mat@thechels.uk
+ * @author: Author
+ * @email: email@address.com
  * @notes:
  * creation behind the scenes.
  */
