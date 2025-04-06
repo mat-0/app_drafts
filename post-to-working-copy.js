@@ -1,7 +1,7 @@
 /*
- * @title: Jekyll formatting -> Working Copy
- * @author: Author
- * @email: email@address.com
+ * @title: Post to Working Copy
+ * @author: Mat B
+ * @email: 
  * @notes:
  * creation behind the scenes.
  */
@@ -27,7 +27,7 @@ if (!result) {
         content = draft.content,
         prompt = Prompt.create(),
         date = new Date(),
-	now = new Date().toISOString().substr(0, 10);
+        now = new Date().toISOString().substr(0, 10);
 
         prompt.title = 'Jekyll post data';
         prompt.message = 'Enter Jekyll post data';
@@ -38,16 +38,14 @@ if (!result) {
         } else {
             prompt.addTextField('title', 'Title', draft.title);
         };
-
-        prompt.addTextField('link', 'Link', '');
-	prompt.addTextField('cited', 'Cited', '');
+	
         prompt.addTextField('date', 'Date', now);
        
         prompt.addButton('Ok');
         prompt.show();
 
         if (prompt.buttonPressed == "Ok") {
-                titleArr = prompt.fieldValues['title'].split(' '),
+                        titleArr = prompt.fieldValues['title'].split(' '),
                 fileName = now + '-';
 
             // modify the filename to be yyyy-mm-dd-title.md
@@ -64,11 +62,7 @@ if (!result) {
             newDraft += 'layout: post\n'
             newDraft += 'date: ' + prompt.fieldValues['date'] + '\n';
 
-            if (prompt.fieldValues['link'] !== '')
-                newDraft += 'link: ' + prompt.fieldValues['link'] + '\n';
-
             newDraft += 'title: ' + prompt.fieldValues['title'] + '\n';
-	    newDraft += 'cited: ' + prompt.fieldValues['cited'] + '\n';
             newDraft += '\n';
             newDraft += '---\n';
             newDraft += '\n';
@@ -86,8 +80,7 @@ if (!result) {
                           encodeURI(fileName.toLowerCase()) + 
                           '&text=' + 
                           encodeURI(newDraft),
-                cb = CallbackURL.create();
-
+            cb = CallbackURL.create();
             cb.baseURL = baseURL;
             cb.open();
         };
